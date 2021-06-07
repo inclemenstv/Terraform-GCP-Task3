@@ -1,3 +1,12 @@
+terraform {
+  required_providers {
+    google = {
+      source  = "${var.terraform_source}"
+      version = "${var.terraform_version}"
+    }
+  }
+}
+
 // Configure the Google Cloud provider
 provider "google" {
  credentials = "${file("${var.credentials}")}"
@@ -16,7 +25,7 @@ resource "google_compute_subnetwork" "subnet" {
  ip_cidr_range = "${var.subnet_cidr}"
  network       = "${var.network_name}-vpc"
  depends_on    = ["google_compute_network.vpc"]
- region      = "${var.region}"
+ region        = "${var.region}"
 }
 // VPC firewall configuration
 resource "google_compute_firewall" "firewall" {
