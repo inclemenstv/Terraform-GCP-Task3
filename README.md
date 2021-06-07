@@ -1,7 +1,7 @@
 # Terraform-GCP-Task3
 
 ### Purpose
-Describes GCP infrastructure using Terraforms
+Create GCP infrastructure using Terraform
 
 ### Preparation
 1. Pre-install Terraform
