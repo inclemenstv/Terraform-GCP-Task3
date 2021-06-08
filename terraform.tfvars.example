@@ -1,6 +1,3 @@
-// Terraform
-terraform_source  = "hashicorp/google"
-terraform_version = "3.5.0"
 // Project setting
 region          = "europe-west2"
 zone            = "europe-west2-a"
