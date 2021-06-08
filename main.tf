@@ -1,8 +1,8 @@
 terraform {
   required_providers {
     google = {
-      source  = "${var.terraform_source}"
-      version = "${var.terraform_version}"
+      source  = "hashicorp/google"
+      version = "3.70.0"
     }
   }
 }
@@ -62,4 +62,16 @@ resource "google_compute_instance" "vm_instance" {
     access_config {
     }
   }
+}
+
+output "virtual_machines" {
+  value = [
+    for i, vm in google_compute_instance.vm_instance : {
+      name = vm.name
+      id   = vm.id
+
+      private_ip   = google_compute_instance.vm_instance[i].network_interface.0.network_ip
+      public_ip    = google_compute_instance.vm_instance[i].network_interface.0.access_config.0.nat_ip
+    }
+  ]
 }

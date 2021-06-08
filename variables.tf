@@ -1,6 +1,10 @@
 // Terraform
-variable "terraform_source" {}
-variable "terraform_version" {}
+variable "terraform_source" {
+    type = string
+}
+variable "terraform_version" {
+    type = string
+}
 // Project setting
 variable "region" {}
 variable "zone" {}
